@@ -3,7 +3,7 @@ export BERT_BASE_DIR=~/bert/bert_model/models/chinese_L-12_H-768_A-12
 export GLUE_DIR=~/bert/examples/text_classifiler/data
 export OUTPUT_DIR=~/bert/examples/text_classifiler/output
 
-python bert_classifier.py \
+python ~/bert/examples/text_classifiler/bert_classifier.py \
   --task_name=setiment \
   --do_train=true \
   --do_eval=true \

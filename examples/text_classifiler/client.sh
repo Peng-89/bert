@@ -3,7 +3,7 @@ export BERT_BASE_DIR=~/bert/bert_model/models/chinese_L-12_H-768_A-12
 export GLUE_DIR=~/bert/examples/text_classifiler/data
 export MODEL_DIR=~/bert/examples/text_classifiler/output
 
-python client.py \
+python ~/bert/examples/text_classifiler/client.py \
   --data_dir=$GLUE_DIR \
   --vocab_file=$BERT_BASE_DIR/vocab.txt \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
