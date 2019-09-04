@@ -1,5 +1,8 @@
 from __future__ import print_function
 
+##加载
+import sys
+sys.path.append("../../../")
 
 import requests
 from bert_classifier import *

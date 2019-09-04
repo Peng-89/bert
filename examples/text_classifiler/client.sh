@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-export BERT_BASE_DIR=./bert_model/models/chinese_L-12_H-768_A-12
-export GLUE_DIR=./Bert/data
-export MODEL_DIR=./Bert/output
+export BERT_BASE_DIR=~/bert/bert_model/models/chinese_L-12_H-768_A-12
+export GLUE_DIR=~/bert/examples/text_classifiler/data
+export MODEL_DIR=~/bert/examples/text_classifiler/output
 
 python client.py \
   --data_dir=$GLUE_DIR \
