@@ -5,6 +5,7 @@ from bert_classifier import *
 import time
 import tensorflow as tf
 import numpy as np
+import sys
 
 tf.enable_eager_execution()
 config = tf.ConfigProto()
@@ -120,7 +121,8 @@ class Client:
 
 if __name__ == '__main__':
     client = Client()
-    msg = ["电池一直用可以用半天，屏幕很好。","机是正品，用着很流畅，618活动时买的，便宜了不少！",""]
+    ##msg = ["电池一直用可以用半天，屏幕很好。","机是正品，用着很流畅，618活动时买的，便宜了不少！",""]
+    msg = sys.argv[-1:][0].split(",")
     prediction = client.predict(msg)
     # print('probability: %s'%prediction)
     print(prediction)
