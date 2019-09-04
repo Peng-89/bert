@@ -5,6 +5,7 @@ export GLUE_DIR=${BERT_HOME}/examples/text_classifiler/data
 export MODEL_DIR=${BERT_HOME}/examples/text_classifiler/output
 export MODEL_PB_DIR=${BERT_HOME}/examples/text_classifiler/api/
 
+cd $BERT_HOME
 python ${BERT_HOME}/examples/text_classifiler/export.py \
   --task_name=setiment \
   --do_predict=true \
