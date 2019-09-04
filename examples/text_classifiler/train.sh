@@ -4,7 +4,6 @@ export BERT_BASE_DIR=${BERT_HOME}/bert_model/chinese_L-12_H-768_A-12
 export GLUE_DIR=${BERT_HOME}/data
 export OUTPUT_DIR=${BERT_HOME}/output
 
-cd $BERT_HOME
 python bert_classifier.py \
   --task_name=setiment \
   --do_train=true \
