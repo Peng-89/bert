@@ -45,6 +45,7 @@ class MyProcessor(DataProcessor):
                     continue
 
             guid = "%s-%s" % (set_type, i)
+            print("==============",line)
             text = tokenization.convert_to_unicode(line[1])
             if set_type == "test" or set_type == "pred":
                 label = "1"
