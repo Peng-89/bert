@@ -79,7 +79,7 @@ class Client:
 
     def predict(self, sentences):
 
-        self.preprocess(sentences)
+        ##self.preprocess(sentences)
 
         predict_examples = self.processor.get_pred_examples(FLAGS.data_dir)
         predict_file = os.path.join(FLAGS.output_dir, "predict.tf_record")

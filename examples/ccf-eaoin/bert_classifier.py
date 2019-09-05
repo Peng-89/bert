@@ -47,14 +47,14 @@ class MyProcessor(DataProcessor):
             guid = "%s-%s" % (set_type, i)
             try:
                 text = tokenization.convert_to_unicode(line[1])
+                if set_type == "test" or set_type == "pred":
+                    label = "1"
+                else:
+                    label = tokenization.convert_to_unicode(line[0])
+                examples.append(
+                    InputExample(guid=guid, text_a=text, label=label))
             except:
-                print("==============", line)
-            if set_type == "test" or set_type == "pred":
-                label = "1"
-            else:
-                label = tokenization.convert_to_unicode(line[0])
-            examples.append(
-                InputExample(guid=guid, text_a=text, label=label))
+                ""
         return examples
 
 
