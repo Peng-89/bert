@@ -217,7 +217,7 @@ def main(_):
     with tf.gfile.GFile(output_predict_file, "w") as writer:
         tf.logging.info("***** Predict results *****")
         for prediction in result:
-            tf.logging.info("===============:",prediction)
+            tf.logging.info("===============:",result)
             output_line = "\t".join(str(class_probability) for class_probability in prediction) + "\n"
             writer.write(output_line)
 
