@@ -192,6 +192,13 @@ def main(_):
   if FLAGS.do_predict:
     predict_examples = processor.get_test_examples(FLAGS.data_dir)
     num_actual_predict_examples = len(predict_examples)
+    if FLAGS.use_tpu:
+      # TPU requires a fixed batch size for all batches, therefore the number
+      # of examples must be a multiple of the batch size, or else examples
+      # will get dropped. So we pad with fake examples which are ignored
+      # later on.
+      while len(predict_examples) % FLAGS.predict_batch_size != 0:
+        predict_examples.append(PaddingInputExample())
 
     predict_file = os.path.join(FLAGS.output_dir, "predict.tf_record")
     file_based_convert_examples_to_features(predict_examples, label_list,
@@ -215,11 +222,17 @@ def main(_):
 
     output_predict_file = os.path.join(FLAGS.output_dir, "test_results.tsv")
     with tf.gfile.GFile(output_predict_file, "w") as writer:
-        tf.logging.info("***** Predict results *****")
-        for prediction in result:
-            tf.logging.info("===============:",result)
-            output_line = "\t".join(str(class_probability) for class_probability in prediction) + "\n"
-            writer.write(output_line)
+      num_written_lines = 0
+      tf.logging.info("***** Predict results *****")
+      for (i, prediction) in enumerate(result):
+        probabilities = prediction["probabilities"]
+        if i >= num_actual_predict_examples:
+          break
+        output_line = "\t".join(
+            str(class_probability)
+            for class_probability in probabilities) + "\n"
+        writer.write(output_line)
+        num_written_lines += 1
 
 
 if __name__ == "__main__":
