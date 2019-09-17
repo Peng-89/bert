@@ -8,6 +8,7 @@ from __future__ import print_function
 from run_classifier import *
 import os
 import tensorflow as tf
+import numpy as np
 
 from tqdm import tqdm
 
@@ -229,7 +230,7 @@ def main(_):
         if i >= num_actual_predict_examples:
           break
         output_line = "\t".join(
-            str(class_probability)
+            str(np.argmax(class_probability))
             for class_probability in probabilities) + "\n"
         writer.write(output_line)
         num_written_lines += 1
