@@ -230,7 +230,7 @@ def main(_):
         if i >= num_actual_predict_examples:
           break
         output_line = "\t".join(
-            str(np.argmax(class_probability))
+            str(class_probability)
             for class_probability in probabilities) + "\n"
         writer.write(output_line)
         num_written_lines += 1
